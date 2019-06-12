@@ -16,14 +16,47 @@
 
 // code example for Window Binding
 
+console.log(this)
+
 // Principle 2
 
 // code example for Implicit Binding
+
+const myCar={
+    year:1999,
+    make:'Toyota',
+    model:'Avalon',
+    motor:'3.0L V6',
+    describeCar: function(){
+        return `My car is ${this.year} ${this.make} ${this.model} and it has a ${this.motor} engine.`
+    }
+}
+
+console.log(myCar.describeCar());
 
 // Principle 3
 
 // code example for New Binding
 
+function carObj (year, make, model,motor){
+    this.year = year;
+    this.make = make;
+    this.model = model;
+    this.motor = motor; 
+}
+carObj.prototype.describeCar = function(){
+    return `My car is ${this.year} ${this.make} ${this.model} and it has a ${this.motor} engine.`
+}
+
+const lamborghiniDiablo = new carObj(1999, 'Lamborghini', 'Diablo', '5.7L V12')
+console.log(lamborghiniDiablo.describeCar());
+
 // Principle 4
 
 // code example for Explicit Binding
+
+const ferrariF50 = new carObj(1996, 'Ferrari', 'F50', '3.5L V12')
+
+console.log(lamborghiniDiablo.describeCar.apply(ferrariF50))
+console.log(ferrariF50.describeCar.apply(lamborghiniDiablo))
+
