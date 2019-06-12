@@ -59,6 +59,39 @@ Humanoid.prototype = Object.create(CharacterStats.prototype);
 Humanoid.prototype.greet =  function (){
   return `${this.name} offers a greeting in ${this.language}`
 }
+
+function Villain(){
+}
+Villain.prototype = Object.create(Humanoid.prototype)
+
+
+function Hero(){
+}
+Hero.prototype = Object.create(Humanoid.prototype)
+
+Hero.prototype.defend = function(){
+  if (this.healthPoints === 0){
+    return `You have died a Hero`
+  }else if(Math.round(Math.random()) == 1){
+      console.log(Villain.healthPoints = Villain.healthPoints - 1);
+      return `Attack Successful!` 
+    }else{
+      return `Defense Failed!`
+    }
+  }
+
+  Villain.prototype.attack = function(){
+    if (this.healthPoints === 0){
+      return `You have died a Villain`
+    }else if (Math.round(Math.random()) == 1){
+      Hero.healthPoints -= 1;
+      return 'Attack Successful!' 
+    }else{
+      return 'Attack Failed'
+    }
+  }
+
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -118,6 +151,41 @@ Humanoid.prototype.greet =  function (){
     language: 'Elvish',
   });
 
+  const destroyer = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 4,
+      width: 4,
+      height: 8,
+    },
+    healthPoints: 5,
+    name: 'Destroyer',
+    team: 'OMC',
+    weapons: [
+      'Strength',
+      'Mop',
+    ],
+    language: 'Elvish',
+  });
+  
+  const superBaby = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 2,
+      height: 3,
+    },
+    healthPoints: 5,
+    name: 'Stinker',
+    team: 'Munchkins',
+    weapons: [
+      'Loud Cry',
+      'Bottle',
+    ],
+    language: 'Elvish',
+  });
+
+
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
@@ -128,9 +196,48 @@ Humanoid.prototype.greet =  function (){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend()); 
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
+  console.log(destroyer.attack());
+  console.log(superBaby.defend());
 
-
-  // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
