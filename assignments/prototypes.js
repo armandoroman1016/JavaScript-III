@@ -60,36 +60,40 @@ Humanoid.prototype.greet =  function (){
   return `${this.name} offers a greeting in ${this.language}`
 }
 
-function Villain(){
+function Villain(attributes){
+  Humanoid.call(this, attributes)
 }
 Villain.prototype = Object.create(Humanoid.prototype)
 
 
-function Hero(){
+function Hero(attributes){
+  Humanoid.call(this, attributes)
 }
 Hero.prototype = Object.create(Humanoid.prototype)
 
-Hero.prototype.defend = function(){
+Hero.prototype.defend = function(attacker){
   if (this.healthPoints === 0){
     return `You have died a Hero`
   }else if(Math.round(Math.random()) == 1){
-      console.log(Villain.healthPoints = Villain.healthPoints - 1);
+      attacker.healthPoints = attacker.healthPoints - 1;
+      console.log(attacker.healthPoints);
       return `Attack Successful!` 
     }else{
       return `Defense Failed!`
     }
-  }
+}
 
-  Villain.prototype.attack = function(){
+  Villain.prototype.attack = function(target){
     if (this.healthPoints === 0){
       return `You have died a Villain`
     }else if (Math.round(Math.random()) == 1){
-      Hero.healthPoints -= 1;
+      target.healthPoints = target.healthPoints - 1;
+      console.log(target.healthPoints);
       return 'Attack Successful!' 
     }else{
       return 'Attack Failed'
     }
-  }
+}
 
 
 /*
@@ -158,7 +162,7 @@ Hero.prototype.defend = function(){
       width: 4,
       height: 8,
     },
-    healthPoints: 5,
+    healthPoints: 15,
     name: 'Destroyer',
     team: 'OMC',
     weapons: [
@@ -175,7 +179,7 @@ Hero.prototype.defend = function(){
       width: 2,
       height: 3,
     },
-    healthPoints: 5,
+    healthPoints: 15,
     name: 'Stinker',
     team: 'Munchkins',
     weapons: [
@@ -196,47 +200,89 @@ Hero.prototype.defend = function(){
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend()); 
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
-  console.log(destroyer.attack());
-  console.log(superBaby.defend());
+
+ 
+  console.log(destroyer.healthPoints)
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));  
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
+  console.log(destroyer.attack(superBaby));
+  console.log(superBaby.defend(destroyer));
 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
